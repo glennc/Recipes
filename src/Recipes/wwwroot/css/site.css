@@ -1,0 +1,7 @@
+
+.recipe-card img {
+    -webkit-backface-visibility: hidden; /* see https://github.com/twbs/bootstrap/issues/18802 */ 
+    width: 100%;
+    -webkit-filter: brightness(55%);
+    filter: brightness(55%);
+}

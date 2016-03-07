@@ -1,0 +1,16 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": ".NET Core Launch",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "/usr/local/bin/corehost",
+			"args": ["${workspaceRoot}/src/Recipes/bin/Debug/dnxcore50/osx.10.11-x64/Recipes.dll"],
+			"cwd": "${workspaceRoot}/src/Recipes/",
+			"stopAtEntry": false,
+			"sourceFileMap": {}
+		}
+	]
+}

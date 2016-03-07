@@ -1,0 +1,37 @@
+
+<script id="cardTemplate" type="x-tmpl-mustache">
+    {{#each Recipes}}
+        <a href="/recipies/{{Id}}"
+            <div class="card card-inverse recipe-card">
+                <img class="card-img" src="{{Image}}" alt="Recipe card image.">
+                <div class="card-img-overlay">
+                    <h4 class="card-title">{{Name}}</h4>
+                    <p class="card-text">{{Description}}</p>
+                </div>
+            </div>
+        </a>
+     {{/each}}
+</script>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            var source = $('#cardTemplate').html();
+            
+            //todo, stash template function on a variable and do a defined check.
+            //Call it on scroll.
+            var template = Handlebars.compile(source);   // optional, speeds up future uses
+
+            var api = "/api/recipes";
+            $.getJSON( api )
+            .done(function( data ) {
+                    var rendered = template(data);
+                    $('#target').append(rendered);
+            });
+        });
+    </script>
+}
+
+<div class="card-columns" id="target">
+</div>
