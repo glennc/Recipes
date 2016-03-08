@@ -22,13 +22,13 @@ RUN LIBUV_VERSION=1.4.2 \
 
 #Copy and restore project.json to get fastest re-build times if you haven't changed packages, takes advantage
 #of dockers build cache.
-COPY ./src/Recipies/project.json /source/src/recipies
-WORKDIR /source
+COPY ./src/Recipes/project.json /source/src/Recipes/
+COPY ./NuGet.Config /source/
+WORKDIR /source/src/Recipes
 RUN ["dotnet", "restore"]
 #Doing this is safe only if you have a dockerignore file to ignore project.lock.json. Otherwise you can accidentally
 #overwrite it with one from the source directory, which will make the app fail at runtime.
 COPY . /source
-WORKDIR /source/src/Recipes
 RUN ["dotnet", "publish", "-o", "/app"]
 WORKDIR /app
 # I don't think this really gains anything, but probably makes people feel better.
